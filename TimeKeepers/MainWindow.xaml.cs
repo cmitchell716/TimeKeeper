@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,24 @@ namespace TimeKeepers
             InitializeComponent();
             ViewModel = new TimeKeeperViewModel();
             this.DataContext = ViewModel;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // this is for demo purposes only, to make it easier
+            // to get up and running
+            ViewModel.ctx.Database.EnsureCreated();
+
+            // load the entities into EF Core
+            ViewModel.ctx.Persons.Load();
+
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            // clean up database connections
+            ViewModel.ctx.Dispose();
+            base.OnClosing(e);
         }
     }
 }

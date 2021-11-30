@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TimeKeepers"
         mc:Ignorable="d"
         Title="Time Keeper" Height="450" Width="800"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="16"
           Background="Gray">
