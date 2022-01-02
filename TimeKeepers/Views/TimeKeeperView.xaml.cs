@@ -17,7 +17,7 @@ namespace TimeKeepers.Views
     /// <summary>
     /// Interaction logic for TimeKeeperView.xaml
     /// </summary>
-    public partial class TimeKeeperView : Page
+    public partial class TimeKeeperView : UserControl
     {
         TimeKeeperViewModel viewModel;
         public TimeKeeperView(TimeKeeperViewModel vm)
@@ -25,5 +25,6 @@ namespace TimeKeepers.Views
             viewModel = viewModel;
             InitializeComponent();
         }
+
     }
 }

@@ -6,9 +6,272 @@
       xmlns:local="clr-namespace:TimeKeepers.Views"
       xmlns:userControls="clr-namespace:TimeKeepers.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="WhiteSmoke">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Column="0"
+            Margin="16"
+            Orientation="Vertical"
+            >
+            <Button
+            HorizontalContentAlignment="Center"
+            Height="32"
+            Width="128"
+            Margin="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Add New user"
+            Background="LightGray"
+            Foreground="Black"
+            BorderBrush="#f9aa31"
+            FontSize="16"
+            Command="{Binding NewUser}" >
+            </Button>
+            <Button
+            HorizontalContentAlignment="Center"
+            Height="32"
+            Width="128"
+            Margin="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Sign In"
+            Background="LightGray"
+            Foreground="Black"
+            BorderBrush="#f9aa31"
+            FontSize="16"
+            Grid.Column="1"
+            Command="{Binding SignIn}" >
+            </Button>
+            <Button
+            HorizontalContentAlignment="Center"
+            Height="32"
+            Width="128"
+            Margin="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Sign Out"
+            Background="LightGray"
+            Foreground="Black"
+            BorderBrush="#f9aa31"
+            FontSize="16"
+            Grid.Column="1"
+            Command="{Binding SignOut}" >
+            </Button>
+            <Button
+            HorizontalContentAlignment="Center"
+            Height="32"
+            Width="128"
+            Margin="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="View Student"
+            Background="LightGray"
+            Foreground="Black"
+            BorderBrush="#f9aa31"
+            FontSize="16"
+            Grid.Column="1"
+            Command="{Binding ViewStudent}" >
+            </Button>
+            <Button
+            HorizontalContentAlignment="Center"
+            Height="32"
+            Width="128"
+            Margin="8"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Admin"
+            Background="LightGray"
+            Foreground="Black"
+            BorderBrush="#f9aa31"
+            FontSize="16"
+            Grid.Column="1"
+            Command="{Binding Admin}" >
+            </Button>
+        </StackPanel>
+        <StackPanel
+            Grid.Column="1"
+            Margin="16">
+            <StackPanel Name="NewUser" Visibility="{Binding IsNewUser, FallbackValue=Collapsed}" >
+                <Label Content="Student Id"/>
+                <TextBox  Text="{Binding NewId}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label Content="Name"/>
+                <TextBox  Text="{Binding NewName}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Label Content="Check if in Pike"/>
+                <CheckBox IsChecked="{Binding IsNewPike}" Margin="4"/>
+                <Button
+                HorizontalContentAlignment="Center"
+                Height="32"
+                Width="128"
+                Margin="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Create New User"
+                Background="LightGray"
+                Foreground="Black"
+                BorderBrush="#f9aa31"
+                FontSize="16"
+                Grid.Column="1"
+                Grid.Row="2"
+                Command="{Binding AddPerson}" >
+                </Button>
+                <TextBlock Text="{Binding NewUserStatus}" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Name="ClockIn" Visibility="{Binding IsSignIn, FallbackValue=Collapsed}" >
+                <Label Content="Student Id"/>
+                <TextBox  Text="{Binding InId}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Button
+                HorizontalContentAlignment="Center"
+                Height="32"
+                Width="128"
+                Margin="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Clock In"
+                Background="LightGray"
+                Foreground="Black"
+                BorderBrush="#f9aa31"
+                FontSize="16"
+                Grid.Column="1"
+                Command="{Binding ClockIn}" >
+                </Button>
+                <TextBlock Text="{Binding InStatus}" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Name="ClockOut" Visibility="{Binding IsSignOut, FallbackValue=Collapsed}" >
+                <Label Content="Student Id"/>
+                <TextBox  Text="{Binding OutId}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Button
+                HorizontalContentAlignment="Center"
+                Height="32"
+                Width="128"
+                Margin="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Clock Out"
+                Background="LightGray"
+                Foreground="Black"
+                BorderBrush="#f9aa31"
+                FontSize="16"
+                Grid.Column="1"
+                Command="{Binding ClockOut}" >
+                </Button>
+                <TextBlock Text="{Binding OutStatus}" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Name="StudentView" Visibility="{Binding IsViewStudent, FallbackValue=Collapsed}" >
+                <StackPanel Orientation="Horizontal" Grid.Row="0" >
+                    <Label Content="Student Id" Margin="4" VerticalContentAlignment="Center"/>
+                    <TextBox  Text="{Binding ViewId}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button
+                    HorizontalContentAlignment="Center"
+                    Height="32"
+                    Width="128"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Display User"
+                    Background="LightGray"
+                    Foreground="Black"
+                    BorderBrush="#f9aa31"
+                    FontSize="16"
+                    Grid.Column="1"
+                    Command="{Binding DisplayStudent}" >
+                    </Button>
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="300" Width="300">
+                    <TextBlock Text="{Binding DisplayStudentText}" HorizontalAlignment="Center"/>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Name="Admin" Visibility="{Binding IsAdmin, FallbackValue=Collapsed}" >
+                <Label Content="Enter Password"/>
+                <TextBox  Text="{Binding CheckPassword}" Margin="4" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <Button
+                HorizontalContentAlignment="Center"
+                Height="32"
+                Width="128"
+                Margin="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Confirm"
+                Background="LightGray"
+                Foreground="Black"
+                BorderBrush="#f9aa31"
+                FontSize="16"
+                Grid.Column="1"
+                Command="{Binding ConfirmPassword}" >
+                </Button>
+                <TextBlock Text="{Binding AdminStatus}" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Name="FullAdmin" Visibility="{Binding FullAdmin, FallbackValue=Collapsed}">
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Student Id" VerticalContentAlignment="Center"/>
+                    <TextBox  Text="{Binding AddHoursId}" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                    <Label Content="Hours" VerticalContentAlignment="Center"/>
+                    <TextBox  Text="{Binding AddHoursHours}" VerticalAlignment="Center" Width="32" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button
+                    HorizontalContentAlignment="Center"
+                    Height="32"
+                    Width="128"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Add Hours"
+                    Background="LightGray"
+                    Foreground="Black"
+                    BorderBrush="#f9aa31"
+                    FontSize="16"
+                    Grid.Column="1"
+                    Command="{Binding AddHours}" >
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  >
+                    <Label Content="Student Id" VerticalContentAlignment="Center"/>
+                    <TextBox  Text="{Binding DeleteId}" VerticalAlignment="Center" Width="128" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                    <Button
+                    HorizontalContentAlignment="Center"
+                    Height="32"
+                    Width="128"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Delete User"
+                    Background="LightGray"
+                    Foreground="Black"
+                    BorderBrush="#f9aa31"
+                    FontSize="16"
+                    Grid.Column="1"
+                    Command="{Binding DeleteUser}" >
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Calendar Name="Start" Height="180" Margin="4" SelectedDate="{Binding ReportStart}"/>
+                    <Calendar Name="End" Height="180" Margin="4" SelectedDate="{Binding ReportEnd}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="Report Pikes?" />
+                    <CheckBox IsChecked="{Binding ReportPike}" Margin="4"/>
+                    <Button
+                    HorizontalContentAlignment="Center"
+                    Height="32"
+                    Width="128"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Create Report"
+                    Background="LightGray"
+                    Foreground="Black"
+                    BorderBrush="#f9aa31"
+                    FontSize="16"
+                    Grid.Column="1"
+                    Command="{Binding CreateReport}" >
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="{Binding FullAdminStatus}" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
